@@ -1,24 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Router, Route, Link } from './react-router';
+import {StyleSheet, Text, View} from 'react-native';
+import {Link, Route, Router} from './react-router';
+import AllBoards from "./src/components/AllBoards";
 
-const Home = () => <Text>Home</Text>;
-
-const About = () => <Text>About</Text>;
+const About = () => <Text>About Component</Text>;
 
 const App = () => (
   <Router>
+    <View style={styles.nav}>
+      <Link to="/">
+        <Text>Home</Text>
+      </Link>
+      <Link to="/about">
+        <Text>About</Text>
+      </Link>
+    </View>
     <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Home</Text>
-        </Link>
-        <Link to="/about">
-          <Text>About</Text>
-        </Link>
-      </View>
-
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={AllBoards} />
+      <Route exact path="/allBoards" component={AllBoards} />
       <Route path="/about" component={About} />
     </View>
   </Router>
