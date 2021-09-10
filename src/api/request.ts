@@ -8,5 +8,11 @@ const instance = axios.create({
 export default {
     get: async function (path: string, headers: object = null, params: object = null) {
         return instance.get(path, {headers, params})
+    },
+    post: async function (path: string,
+                          body: string | object = null,
+                          headers: object = null,
+                          params: object = null) {
+        return instance.post(path, body, {headers, params})
     }
 }

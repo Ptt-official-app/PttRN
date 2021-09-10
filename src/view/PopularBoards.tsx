@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {FlatList, ListRenderItem, Text} from "react-native";
+import {FlatList, Text} from "react-native";
 import {Board, FetchBoard} from "../model/board";
 
-export default class AllBoards extends Component<{}, {
+export default class PopularBoards extends Component<{}, {
     boards: Board[]
 }> {
     constructor(props) {
@@ -20,10 +20,10 @@ export default class AllBoards extends Component<{}, {
         );
     }
     renderItem = ({ item }: { item: Board }) => (
-        <Text>{item.title}</Text>
+        <Text>{item.brdname} {item.title}</Text>
     );
     async componentDidMount() {
-        const allBoards = await FetchBoard.allBoards()
+        const allBoards = await FetchBoard.popularBoards()
         this.setState({
             boards: allBoards
         })
