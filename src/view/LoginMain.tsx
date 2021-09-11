@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Button, StyleSheet, Text, TextInput, View} from "react-native";
+import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Account} from "../model/account";
 
 export default class LoginMain extends Component<{}, {
@@ -9,7 +10,7 @@ export default class LoginMain extends Component<{}, {
 }> {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             username: '',
             password: '',
             hidePassword: true
@@ -23,12 +24,27 @@ export default class LoginMain extends Component<{}, {
                 <View style={styles.loginBox}>
                     <TextInput onChangeText={username => this.setState({username})}
                                style={styles.loginInput} placeholder="使用者帳號"/>
-                    <TextInput onChangeText={password => this.setState({password})}
-                               style={styles.loginInput} placeholder="密碼"
-                               secureTextEntry={this.state.hidePassword}
-                    />
+                    <View style={styles.passwordOuter}>
+                        <TextInput onChangeText={password => this.setState({password})}
+                                   style={styles.passwordInput}
+                                   placeholder="密碼"
+                                   secureTextEntry={this.state.hidePassword}
+                        />
+                        <TouchableOpacity
+                            onPress={() => {
+                                this.setState({
+                                    hidePassword: !this.state.hidePassword
+                                });
+                            }}>
+                            <Icon
+                                name={this.state.hidePassword ? 'visibility' : 'visibility-off'}
+                                size={24}
+                                color={'#EEE'}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <Button onPress={this.login} title="登入" />
+                <Button onPress={this.login} title="登入"/>
             </View>
         );
     }
@@ -47,7 +63,8 @@ export default class LoginMain extends Component<{}, {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 20,
+        paddingHorizontal: 30,
+        paddingVertical: 60,
         textAlignVertical: 'center'
     },
     logoText: {
@@ -64,6 +81,19 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(50, 50, 50)',
         fontSize: 20,
         padding: 5,
-        margin: 5
-    }
+        margin: 5,
+    },
+    passwordOuter: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: 'rgb(50, 50, 50)',
+        padding: 5,
+        margin: 5,
+    },
+    passwordInput: {
+        flex: 1,
+        color: 'white',
+        backgroundColor: 'rgb(50, 50, 50)',
+        fontSize: 20,
+    },
 })
