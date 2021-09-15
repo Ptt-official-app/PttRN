@@ -52,10 +52,11 @@ export default class LoginMain extends Component<{}, {
     login = async () => {
         try {
             await Account.login(this.state.username, this.state.password)
-            // TODO: Move to home view
+            // @ts-ignore
+            this.props.history.push('/home')
         } catch (e) {
             // TODO: Show error message
-            console.error(e.response.status, e.response.data, e.response)
+            console.error(e)
         }
     }
 

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import {FlatList, Text} from "react-native";
+import {FlatList, StyleSheet, View} from "react-native";
 import {Board, FetchBoard} from "../model/board";
+import BoardListItem from "../component/BoardListItem";
 
 export default class PopularBoards extends Component<{}, {
     boards: Board[]
@@ -13,14 +14,13 @@ export default class PopularBoards extends Component<{}, {
     }
     render() {
         return (
-            <>
-                <Text>看板列表</Text>
+            <View style={styles.page}>
                 <FlatList data={this.state.boards} renderItem={this.renderItem} />
-            </>
+            </View>
         );
     }
     renderItem = ({ item }: { item: Board }) => (
-        <Text>{item.brdname} {item.title}</Text>
+        <BoardListItem board={item}/>
     );
     async componentDidMount() {
         const allBoards = await FetchBoard.popularBoards()
@@ -29,3 +29,11 @@ export default class PopularBoards extends Component<{}, {
         })
     }
 }
+
+const styles = StyleSheet.create({
+    page: {
+        backgroundColor: '#000',
+        height: '100%',
+        width: '100%'
+    }
+})

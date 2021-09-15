@@ -3,12 +3,13 @@ import {StyleSheet, View} from 'react-native';
 import {Route, Router} from './react-router';
 import PopularBoards from "./src/view/PopularBoards";
 import LoginMain from "./src/view/LoginMain";
+import Home from "./src/view/Home";
 
 const App = () => (
     <Router>
-        {/*<View style={styles.nav}>*/}
         <View style={styles.container}>
             <Route exact path="/" component={LoginMain}/>
+            <Route exact path="/home" component={Home}/>
             <Route exact path="/popularBoards" component={PopularBoards}/>
         </View>
     </Router>
