@@ -24,6 +24,7 @@ export default class BoardList extends Component<{
                 <SearchBar
                     style={styles.searchBar}
                     placeholder="搜尋看板"
+                    // @ts-ignore
                     onChangeText={search => this.setState({search})}
                     value={this.state.search}
                 />
