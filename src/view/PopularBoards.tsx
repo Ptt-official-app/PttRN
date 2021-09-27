@@ -1,39 +1,41 @@
 import React, {Component} from "react";
-import {FlatList, StyleSheet, View} from "react-native";
+import {ActivityIndicator, StyleSheet, View} from "react-native";
 import {Board, FetchBoard} from "../model/board";
-import BoardListItem from "../component/BoardListItem";
+import BoardList from "./BoardList";
 
 export default class PopularBoards extends Component<{}, {
     boards: Board[]
+    loading: boolean,
 }> {
     constructor(props) {
         super(props);
         this.state = {
-            boards: []
+            boards: [],
+            loading: true
         }
     }
+
     render() {
         return (
-            <View style={styles.page}>
-                <FlatList data={this.state.boards} renderItem={this.renderItem} />
+            <View style={[styles.container]}>
+                {this.state.loading && <ActivityIndicator size="large" style={{backgroundColor: '#000'}}/>}
+                <BoardList boards={this.state.boards}/>
             </View>
         );
     }
-    renderItem = ({ item }: { item: Board }) => (
-        <BoardListItem board={item}/>
-    );
+
     async componentDidMount() {
         const allBoards = await FetchBoard.popularBoards()
         this.setState({
-            boards: allBoards
+            boards: allBoards,
+            loading: false
         })
     }
 }
 
 const styles = StyleSheet.create({
-    page: {
-        backgroundColor: '#000',
-        height: '100%',
-        width: '100%'
-    }
-})
+    container: {
+        flex: 1,
+        justifyContent: "center"
+    },
+});
