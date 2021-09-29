@@ -18,23 +18,30 @@ class Board extends BaseModel {
     last_post_time: number;
     stat_attr: number;
     level_idx: string;
-    gid: number
+    gid: number;
 
     constructor(jsonObject: object) {
-        super(jsonObject)
+        super(jsonObject);
     }
 
+}
+
+async function fetchBoards(api: Promise<any>): Promise<Board[]> {
+    const jBoards = (await api).data;
+    const ret: Board[] = [];
+    for (const jBoard of jBoards.list) {
+        ret.push(new Board(jBoard));
+    }
+    return ret;
 }
 
 class FetchBoard {
     static async allBoards(): Promise<Board[]> {
-        const jBoards = (await board.all()).data;
-        const ret: Board[] = []
-        for (const jBoard of jBoards.list) {
-            ret.push(new Board(jBoard))
-        }
-        return ret
+        return fetchBoards(board.all());
+    }
+    static async popularBoards(): Promise<Board[]> {
+        return fetchBoards(board.popular());
     }
 }
 
-export { Board, FetchBoard }
+export {Board, FetchBoard};

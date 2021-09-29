@@ -1,19 +1,23 @@
 {
   "dependencies": {
+    "@babel/core": "^7.15.5",
+    "@react-navigation/bottom-tabs": "^6.0.5",
+    "@react-navigation/native": "^6.0.2",
+    "@types/react": "~16.9.35",
+    "@types/react-native": "~0.63.2",
     "expo": "~42.0.0",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-axios": "^0.17.1",
+    "react-native-elements": "^3.4.2",
+    "react-native-screens": "^3.7.0",
+    "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
+    "react-navigation": "^4.4.4",
     "react-router-dom": "5.1.2",
-    "react-router-native": "5.1.2"
-  },
-  "devDependencies": {
-    "@babel/core": "~7.9.0",
-    "typescript": "~4.0.0",
-    "@types/react": "~16.9.35",
-    "@types/react-native": "~0.63.2"
+    "react-router-native": "5.1.2",
+    "typescript": "~4.0.0"
   },
   "scripts": {
     "start": "expo start",
