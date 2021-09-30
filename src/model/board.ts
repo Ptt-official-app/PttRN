@@ -1,7 +1,5 @@
 import BaseModel from "./baseModel";
 import boardApi from "../api/boardApi";
-import {Article} from "./article";
-import articleApi from "../api/articleApi";
 
 class Board extends BaseModel {
     bid: string;
@@ -24,15 +22,6 @@ class Board extends BaseModel {
 
     constructor(jsonObject: object) {
         super(jsonObject);
-    }
-
-    async fetchArticles(): Promise<Article[]> {
-        const jArticles = (await articleApi.ofBoard(this.bid)).data;
-        const ret: Article[] = [];
-        for (const json of jArticles.list) {
-            ret.push(new Article(json))
-        }
-        return ret;
     }
 }
 

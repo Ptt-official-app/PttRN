@@ -3,7 +3,9 @@ import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Account} from "../model/account";
 
-export default class LoginMain extends Component<{}, {
+export default class LoginMain extends Component<{
+    history: any
+}, {
     username: string,
     password: string,
     hidePassword: boolean
@@ -52,8 +54,7 @@ export default class LoginMain extends Component<{}, {
     login = async () => {
         try {
             await Account.login(this.state.username, this.state.password)
-            // @ts-ignore
-            this.props.history.push('/home')
+            this.props.history.push('/home');
         } catch (e) {
             // TODO: Show error message
             console.error(e)
@@ -66,7 +67,9 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 30,
         paddingVertical: 60,
-        textAlignVertical: 'center'
+        textAlignVertical: 'center',
+        backgroundColor: 'black',
+        flex: 1
     },
     logoText: {
         color: 'white',

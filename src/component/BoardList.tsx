@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {FlatList, StyleSheet, View} from "react-native";
 import {Board} from "../model/board";
 import {SearchBar} from 'react-native-elements';
-import BoardListItem from "../component/BoardListItem";
+import BoardListItem from "./BoardListItem";
 
 // TODO: Handle infinite pulling paging
 export default class BoardList extends Component<{
