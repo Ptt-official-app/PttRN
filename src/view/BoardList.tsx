@@ -4,6 +4,7 @@ import {Board} from "../model/board";
 import {SearchBar} from 'react-native-elements';
 import BoardListItem from "../component/BoardListItem";
 
+// TODO: Handle infinite pulling paging
 export default class BoardList extends Component<{
     boards: Board[]
 }, {

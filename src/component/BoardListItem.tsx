@@ -1,27 +1,39 @@
 import React, {Component} from "react";
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
 import {Board} from "../model/board";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import utils from "../util/utils";
+import autoBind from 'react-autobind';
 
 export default class BoardListItem extends Component<{
     board: Board
 }, {}> {
+    constructor(props) {
+        super(props);
+        autoBind(this);
+    }
     render() {
         return (
-            <View style={styles.listItem}>
-                <View style={styles.firstRow}>
-                    <Text style={[styles.text, styles.primaryText]}>{this.props.board.brdname}</Text>
-                    <Icon style={{marginRight: 3}}
-                          name={this.props.board.nuser < 100 ? 'person' : 'people'}
-                          size={24}
-                          color={this.iconColor(this.props.board.nuser)}/>
-                    <Text style={styles.text}>{utils.numberWithCommas(this.props.board.nuser)}</Text>
+            <TouchableWithoutFeedback onPress={this.moveToArticleListView}>
+                <View style={styles.listItem}>
+                    <View style={styles.firstRow}>
+                        <Text style={[styles.text, styles.primaryText]}>{this.props.board.brdname}</Text>
+                        <Icon style={{marginRight: 3}}
+                              name={this.props.board.nuser < 100 ? 'person' : 'people'}
+                              size={24}
+                              color={this.iconColor(this.props.board.nuser)}/>
+                        <Text style={styles.text}>{utils.numberWithCommas(this.props.board.nuser)}</Text>
+                    </View>
+                    <Text style={[styles.text, styles.title]}>{this.props.board.title}</Text>
                 </View>
-                <Text style={[styles.text, styles.title]}>{this.props.board.title}</Text>
-            </View>
+            </TouchableWithoutFeedback>
         );
     }
+
+    moveToArticleListView() {
+        console.log(this.props.board.bid)
+    }
+
     iconColor(nuser) {
         // TODO
         if (nuser <= 10) {

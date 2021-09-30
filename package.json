@@ -7,6 +7,7 @@
     "@types/react-native": "~0.63.2",
     "expo": "~42.0.0",
     "react": "^16.13.1",
+    "react-autobind": "^1.0.6",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-axios": "^0.17.1",
@@ -24,7 +25,16 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
   },
-  "private": true
+  "jest": {
+    "preset": "react-native"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.2",
+    "jest": "^27.2.4"
+  }
 }

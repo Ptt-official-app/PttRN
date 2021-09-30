@@ -1,5 +1,7 @@
 import BaseModel from "./baseModel";
-import board from "../api/boardApi";
+import boardApi from "../api/boardApi";
+import {Article} from "./article";
+import articleApi from "../api/articleApi";
 
 class Board extends BaseModel {
     bid: string;
@@ -24,6 +26,14 @@ class Board extends BaseModel {
         super(jsonObject);
     }
 
+    async fetchArticles(): Promise<Article[]> {
+        const jArticles = (await articleApi.ofBoard(this.bid)).data;
+        const ret: Article[] = [];
+        for (const json of jArticles.list) {
+            ret.push(new Article(json))
+        }
+        return ret;
+    }
 }
 
 async function fetchBoards(api: Promise<any>): Promise<Board[]> {
@@ -37,10 +47,10 @@ async function fetchBoards(api: Promise<any>): Promise<Board[]> {
 
 class FetchBoard {
     static async allBoards(): Promise<Board[]> {
-        return fetchBoards(board.all());
+        return fetchBoards(boardApi.all());
     }
     static async popularBoards(): Promise<Board[]> {
-        return fetchBoards(board.popular());
+        return fetchBoards(boardApi.popular());
     }
 }
 
