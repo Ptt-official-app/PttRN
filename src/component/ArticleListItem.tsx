@@ -1,30 +1,20 @@
-import React, {Component} from "react";
+import React from "react";
 import {Article} from "../model/article";
-import autoBind from 'react-autobind';
 import {StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
 
-export default class ArticleListItem extends Component<{
-    article: Article
-}, {}> {
-    constructor(props) {
-        super(props);
-        autoBind(this);
-    }
-    render() {
-        return (
-            <TouchableWithoutFeedback onPress={this.openArticle}>
-                <View style={styles.listItem}>
-                    <View style={styles.firstRow}>
-                        <Text style={[styles.text, styles.primaryText]}>{this.props.article.title}</Text>
-                    </View>
+export default function ArticleListItem(props: { article: Article }) {
+    return (
+        <TouchableWithoutFeedback onPress={openArticle}>
+            <View style={styles.listItem}>
+                <View style={styles.firstRow}>
+                    <Text style={[styles.text, styles.primaryText]}>{props.article.title}</Text>
                 </View>
-            </TouchableWithoutFeedback>
-        );
-    }
+            </View>
+        </TouchableWithoutFeedback>
+    );
+}
 
-    openArticle() {
-
-    }
+function openArticle() {
 
 }
 
