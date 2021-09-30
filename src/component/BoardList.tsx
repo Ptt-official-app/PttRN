@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, View} from "react-native";
 import {Board} from "../model/board";
 import {SearchBar} from 'react-native-elements';
 import BoardListItem from "./BoardListItem";
+import {$t} from "../i18n";
 
 // TODO: Handle infinite pulling paging
 export default class BoardList extends Component<{
@@ -24,7 +25,7 @@ export default class BoardList extends Component<{
             <View style={styles.page}>
                 <SearchBar
                     style={styles.searchBar}
-                    placeholder="搜尋看板"
+                    placeholder={$t('board.searchBoard')}
                     // @ts-ignore
                     onChangeText={search => this.setState({search})}
                     value={this.state.search}
