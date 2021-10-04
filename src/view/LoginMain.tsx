@@ -20,7 +20,7 @@ export default class LoginMain extends Component<{}, {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.logoText}>批踢踢實業坊<br/>Ptt.cc</Text>
+                <Text style={styles.logoText}>批踢踢實業坊{"\n"}Ptt.cc</Text>
                 <View style={styles.loginBox}>
                     <TextInput onChangeText={username => this.setState({username})}
                                style={styles.loginInput} placeholder="使用者帳號"/>
