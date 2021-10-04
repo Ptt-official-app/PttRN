@@ -1,5 +1,5 @@
 import BaseModel from "./baseModel";
-import board from "../api/boardApi";
+import boardApi from "../api/boardApi";
 
 class Board extends BaseModel {
     bid: string;
@@ -23,7 +23,6 @@ class Board extends BaseModel {
     constructor(jsonObject: object) {
         super(jsonObject);
     }
-
 }
 
 async function fetchBoards(api: Promise<any>): Promise<Board[]> {
@@ -37,10 +36,10 @@ async function fetchBoards(api: Promise<any>): Promise<Board[]> {
 
 class FetchBoard {
     static async allBoards(): Promise<Board[]> {
-        return fetchBoards(board.all());
+        return fetchBoards(boardApi.all());
     }
     static async popularBoards(): Promise<Board[]> {
-        return fetchBoards(board.popular());
+        return fetchBoards(boardApi.popular());
     }
 }
 

@@ -1,0 +1,15 @@
+{
+  "login": {
+    "logoText": "批踢踢實業坊\nPtt.cc",
+    "username": "使用者帳號",
+    "password": "密碼",
+    "login": "登入"
+  },
+  "home": {
+    "popularBoard": "熱門看板",
+    "myPage": "個人頁面"
+  },
+  "board": {
+    "searchBoard": "搜尋看板"
+  }
+}
