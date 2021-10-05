@@ -3,12 +3,12 @@ import {StyleSheet, Text, View} from "react-native";
 import {Board} from "../model/board";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import utils from "../util/utils";
-import {Link} from "react-router-dom";
+import {Link} from "../../react-router";
 
-export default function BoardListItem(props: { board: Board }) {
+export default function BoardListItem(props: { board: Board, key: number }) {
     const board = props.board;
     return (
-        <Link to={`/articles/${board.bid}`} style={{textDecoration: 'none'}}>
+        <Link key={props.key} to={`/articles/${board.bid}`} style={{textDecoration: 'none'}}>
             <View style={styles.listItem}>
                 <View style={styles.firstRow}>
                     <Text style={[styles.text, styles.primaryText]}>{board.brdname}</Text>

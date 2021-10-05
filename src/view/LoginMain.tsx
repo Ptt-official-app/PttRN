@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Account} from "../model/account";
-import {$t} from "../i18n";
 
 export default function LoginMain(props: { history: any }) {
     const [username, setUsername] = useState('');
@@ -21,14 +20,14 @@ export default function LoginMain(props: { history: any }) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.logoText}>{$t('login.logoText')}</Text>
+            <Text style={styles.logoText}>{'批踢踢實業坊\nPtt.cc'}</Text>
             <View style={styles.loginBox}>
                 <TextInput onChangeText={username => setUsername(username)}
-                           style={styles.loginInput} placeholder={$t('login.username')}/>
+                           style={styles.loginInput} placeholder={'使用者帳號'}/>
                 <View style={styles.passwordOuter}>
                     <TextInput onChangeText={password => setPassword(password)}
                                style={styles.passwordInput}
-                               placeholder={$t('login.password')}
+                               placeholder={'密碼'}
                                secureTextEntry={hidePassword}
                     />
                     <TouchableOpacity
@@ -41,7 +40,7 @@ export default function LoginMain(props: { history: any }) {
                     </TouchableOpacity>
                 </View>
             </View>
-            <Button onPress={login} title={$t('login.login')}/>
+            <Button onPress={login} title={'登入'}/>
         </View>
     );
 
