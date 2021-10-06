@@ -5,12 +5,12 @@ import LoginMain from "./src/view/LoginMain";
 import Home from "./src/view/Home";
 import ArticlesOfBoard from "./src/view/ArticlesOfBoard";
 import {Route, Router} from './react-router';
-//import {setI18nConfig, RNLocalize} from "./src/i18n";
+import {setI18nConfig, RNLocalize} from "./src/i18n";
 
 export default class App extends Component {
     constructor(props) {
         super(props);
-        //setI18nConfig();
+        setI18nConfig();
     }
 
     render() {
@@ -27,15 +27,15 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        //RNLocalize.addEventListener('change', this.handleLocalizationChange)
+        RNLocalize.addEventListener('change', this.handleLocalizationChange)
     }
 
     componentWillUnmount() {
-        //RNLocalize.removeEventListener('change', this.handleLocalizationChange)
+        RNLocalize.removeEventListener('change', this.handleLocalizationChange)
     }
 
     handleLocalizationChange = () => {
-        //setI18nConfig();
+        setI18nConfig();
         this.forceUpdate();
     }
 };
