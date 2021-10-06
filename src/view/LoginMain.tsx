@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import {Button, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Account} from "../model/account";
-import {$t} from "../i18n";
+
+import { $t } from "../i18n";
 
 export default function LoginMain(props: { history: any }) {
     const [username, setUsername] = useState('');

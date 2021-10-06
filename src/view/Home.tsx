@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from "@react-navigation/native";
 import LoginMain from "./LoginMain";
 import PopularBoards from "./PopularBoards";
-import {$t} from "../i18n";
+import { $t } from "../i18n";
 
 export default function Home() {
     const Tab = createBottomTabNavigator();

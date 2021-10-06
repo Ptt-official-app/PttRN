@@ -45,8 +45,8 @@ export default class BoardList extends Component<{
         }
     }
 
-    renderItem = ({item}: { item: Board }) => (
-        <BoardListItem board={item}/>
+    renderItem = ({item}: { item: Board }, idx: number) => (
+        <BoardListItem key={idx} board={item} />
     );
 }
 
