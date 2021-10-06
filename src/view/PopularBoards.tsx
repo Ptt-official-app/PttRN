@@ -26,6 +26,7 @@ export default class PopularBoards extends Component<{}, {
 
     async componentDidMount() {
         const allBoards = await FetchBoard.popularBoards()
+        allBoards.map((each, idx) => each.key = idx.toString())
         this.setState({
             boards: allBoards,
             loading: false

@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import PopularBoards from "./src/view/PopularBoards";
 import LoginMain from "./src/view/LoginMain";
 import Home from "./src/view/Home";
 import ArticlesOfBoard from "./src/view/ArticlesOfBoard";
 import {Route, Router} from './react-router';
-import * as RNLocalize from 'react-native-localize';
-import {setI18nConfig} from "./src/i18n";
-import View from "react-native-web/dist/vendor/react-native/Animated/components/AnimatedView";
+//import {setI18nConfig, RNLocalize} from "./src/i18n";
 
 export default class App extends Component {
     constructor(props) {
         super(props);
-        setI18nConfig();
+        //setI18nConfig();
     }
 
     render() {
@@ -29,15 +27,15 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        RNLocalize.addEventListener('change', this.handleLocalizationChange)
+        //RNLocalize.addEventListener('change', this.handleLocalizationChange)
     }
 
     componentWillUnmount() {
-        RNLocalize.removeEventListener('change', this.handleLocalizationChange)
+        //RNLocalize.removeEventListener('change', this.handleLocalizationChange)
     }
 
     handleLocalizationChange = () => {
-        setI18nConfig();
+        //setI18nConfig();
         this.forceUpdate();
     }
 };
