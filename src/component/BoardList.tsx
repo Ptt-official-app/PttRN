@@ -30,7 +30,9 @@ export default class BoardList extends Component<{
                     onChangeText={search => this.setState({search})}
                     value={this.state.search}
                 />
-                <FlatList data={this.state.boardsShown} renderItem={this.renderItem}/>
+                <FlatList data={this.state.boardsShown}
+                          // @ts-ignore
+                          renderItem={this.renderItem}/>
             </View>
         );
     }
