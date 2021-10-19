@@ -15,7 +15,7 @@ export default function ArticleListItem(props: { article: Article }) {
                     <Icon style={[styles.icon]} name={'schedule'} size={16}/>
                     <Text style={[styles.text, styles.secondaryText]}>{
                         `${utils.timestampToMonth(createTime)}-${utils.timestampToDay(createTime)}`}</Text>
-                    <Icon style={[styles.icon]} name="person" size={16}/>
+                    <Icon style={[styles.icon]} name={'person'} size={16}/>
                     <Text style={[styles.text, styles.secondaryText]}>{a.owner}</Text>
                 </View>
                 <View style={styles.secondRow}>

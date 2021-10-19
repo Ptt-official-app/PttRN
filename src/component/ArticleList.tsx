@@ -3,12 +3,14 @@ import {Article} from "../model/article";
 import {FlatList, StyleSheet, View} from "react-native";
 import ArticleListItem from "./ArticleListItem";
 
-export default function ArticleList(props: { articles: Article[] }) {
+export default function ArticleList(props: { articles: Article[], scroll: () => void }) {
     return (
         <View style={styles.page}>
-            <FlatList data={props.articles} renderItem={({item}) => (
-                <ArticleListItem article={item}/>
-            )}/>
+            <FlatList
+                data={props.articles}
+                renderItem={({item}) => (<ArticleListItem article={item}/>)}
+                onEndReached={props.scroll}
+            />
         </View>
     );
 }
