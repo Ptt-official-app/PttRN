@@ -18,8 +18,8 @@ export default class PopularBoards extends Component<{}, {
     render() {
         return (
             <View style={[styles.container]}>
-                {this.state.loading && <ActivityIndicator size="large" style={{backgroundColor: '#000'}}/>}
                 <BoardList boards={this.state.boards}/>
+                {this.state.loading && <ActivityIndicator size="large" style={{backgroundColor: '#000'}}/>}
             </View>
         );
     }

@@ -3,7 +3,7 @@ import {Article} from "../model/article";
 import {FlatList, StyleSheet, View} from "react-native";
 import ArticleListItem from "./ArticleListItem";
 
-export default function ArticleList(props: { articles: Article[], scroll: () => void }) {
+export default function ArticleList(props) {
     return (
         <View style={styles.page}>
             <FlatList
@@ -17,9 +17,6 @@ export default function ArticleList(props: { articles: Article[], scroll: () => 
 
 const styles = StyleSheet.create({
     page: {
-        backgroundColor: '#000',
-        height: '100%',
-        width: '100%',
         flexDirection: 'column'
     },
 })

@@ -6,18 +6,7 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 
 const FETCH_PAGE_SIZE = 10;
 
-export default class ArticlesOfBoard extends Component<{
-    history: any,
-    match: {
-        params: {
-            bid: string
-        }
-    }
-}, {
-    nextStartIndex: string,
-    articles: Article[],
-    loading: boolean,
-}> {
+export default class ArticlesOfBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,13 +23,16 @@ export default class ArticlesOfBoard extends Component<{
     render() {
         return (
             <View style={[styles.container]}>
-                <View style={{flexDirection: 'row', marginHorizontal: 14}}>
+                <View style={styles.header}>
                     <Icon style={[styles.backIcon]} name={'arrow-back-ios'}
                           size={30} onPress={this.goBack.bind(this)}/>
                     <Text style={[styles.boardName]}>{this.props.match.params.bid}</Text>
+                    {this.state.loading ? <ActivityIndicator size="large" style={[styles.loadingCircle]}/>  : null}
                 </View>
-                <ArticleList articles={this.state.articles} scroll={this.fetchArticles.bind(this)}/>
-                {this.state.loading && <ActivityIndicator size="large" style={{backgroundColor: '#000'}}/>}
+                <ArticleList
+                    style={[styles.articlesContainer]}
+                    articles={this.state.articles}
+                    scroll={this.fetchArticles.bind(this)}/>
             </View>
         );
     }
@@ -67,16 +59,25 @@ export default class ArticlesOfBoard extends Component<{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center"
+    },
+    header: {
+        flexDirection: 'row',
+        marginHorizontal: 14,
     },
     boardName: {
         color: 'white',
         fontSize: 30,
         fontWeight: 'bold',
-        marginVertical: 5
+        marginVertical: 5,
+        flex: 1,
+    },
+    loadingCircle: {
     },
     backIcon: {
         color: 'white',
         textAlignVertical: 'center'
-    }
+    },
+    articlesContainer: {
+        flexShrink: 1,
+    },
 });

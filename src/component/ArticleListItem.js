@@ -4,7 +4,7 @@ import {StyleSheet, Text, TouchableWithoutFeedback, View} from "react-native";
 import utils from "../util/utils";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
-export default function ArticleListItem(props: { article: Article }) {
+export default function ArticleListItem(props) {
     const a = props.article;
     const createTime = new Date(a.create_time * 1000);
     return (

@@ -55,8 +55,7 @@ export default class BoardList extends Component<{
 const styles = StyleSheet.create({
     page: {
         backgroundColor: '#000',
-        height: '100%',
-        width: '100%',
+        flex: 1,
         flexDirection: 'column'
     },
     searchBar: {
