@@ -37,11 +37,24 @@ async function fetchArticles(api: Promise<any>): Promise<Article[]> {
     return ret;
 }
 
+function extractArticles(res: any): Article[] {
+    const jArticles = res;
+    const ret: Article[] = [];
+    for (const json of jArticles.list) {
+        ret.push(new Article(json));
+    }
+    return ret;
+}
+
 
 class FetchArticle {
     static async ofBoard(bid: string): Promise<Article[]> {
         return fetchArticles(articleApi.ofBoard(bid));
     }
+
+    static async inBoardPaged(bid: string, startIndex: string, limit: number): Promise<any> {
+        return (await articleApi.ofBoardPaged(bid, startIndex, limit)).data;
+    }
 }
 
-export {Article, FetchArticle}
+export {Article, FetchArticle, extractArticles}

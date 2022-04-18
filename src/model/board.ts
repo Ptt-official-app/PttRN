@@ -20,6 +20,8 @@ class Board extends BaseModel {
     level_idx: string;
     gid: number;
 
+    key: string;
+
     constructor(jsonObject: object) {
         super(jsonObject);
     }
