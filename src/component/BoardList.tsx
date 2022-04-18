@@ -1,9 +1,10 @@
-import React, {Component} from "react";
-import {FlatList, StyleSheet, View} from "react-native";
-import {Board} from "../model/board";
-import {SearchBar} from 'react-native-elements';
-import BoardListItem from "./BoardListItem";
-import {$t} from "../i18n";
+import React, { Component } from "react"
+import { FlatList, View } from "react-native"
+import { Board } from "../model/board"
+import { SearchBar } from 'react-native-elements'
+import BoardListItem from "./BoardListItem"
+import { $t } from "../i18n"
+import styles from './BoardList.style'
 
 // TODO: Handle infinite pulling paging
 export default class BoardList extends Component<{
@@ -13,11 +14,11 @@ export default class BoardList extends Component<{
     search: string
 }> {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             boardsShown: this.props.boards,
             search: ''
-        };
+        }
     }
 
     render() {
@@ -27,14 +28,14 @@ export default class BoardList extends Component<{
                     style={styles.searchBar}
                     placeholder={$t('board.searchBoard')}
                     // @ts-ignore
-                    onChangeText={search => this.setState({search})}
+                    onChangeText={search => this.setState({ search })}
                     value={this.state.search}
                 />
                 <FlatList data={this.state.boardsShown}
-                          // @ts-ignore
-                          renderItem={this.renderItem}/>
+                    // @ts-ignore
+                    renderItem={this.renderItem} />
             </View>
-        );
+        )
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -43,23 +44,12 @@ export default class BoardList extends Component<{
             this.setState({
                 boardsShown: this.props.boards.filter(
                     board => board.brdname.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0)
-            });
+            })
         }
     }
 
-    renderItem = ({item}: { item: Board }, idx: number) => (
+    renderItem = ({ item }: { item: Board }, idx: number) => (
         <BoardListItem key={idx} board={item} />
     );
 }
 
-const styles = StyleSheet.create({
-    page: {
-        backgroundColor: '#000',
-        flex: 1,
-        flexDirection: 'column'
-    },
-    searchBar: {
-        padding: 0,
-        margin: 0
-    }
-})

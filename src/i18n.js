@@ -13,14 +13,14 @@ const translate = memoize(
 )
 
 const setI18nConfig = () => {
-    const fallback = {languageTag: 'zhTW'}
+    const fallback = { languageTag: 'zhTW' }
 
-    const {languageTag} =
-    RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) || fallback
+    const { languageTag } =
+        RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) || fallback
     translate.cache.clear()
     console.log('setI18nConfig: languageTag:', languageTag)
-    i18n.translations = {[languageTag]: translationGetters[languageTag]()}
+    i18n.translations = { [languageTag]: translationGetters[languageTag]() }
     i18n.locale = languageTag
 }
 
-export {RNLocalize, translate as $t, setI18nConfig}
+export { RNLocalize, translate as $t, setI18nConfig }

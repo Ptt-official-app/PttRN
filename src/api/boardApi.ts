@@ -1,10 +1,10 @@
-import req from "./request";
+import req from "./request"
 
 export default {
-    all: async function() {
+    all: async () => {
         return req.get('/api/boards')
     },
-    popular: async function() {
+    popular: async () => {
         return req.get('/api/boards/popular')
     }
 }
