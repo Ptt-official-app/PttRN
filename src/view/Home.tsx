@@ -5,7 +5,7 @@ import LoginMain from "./LoginMain"
 import PopularBoards from "./PopularBoards"
 import { $t } from "../i18n"
 
-export default function Home() {
+export default () => {
     const Tab = createBottomTabNavigator()
     return (
         <NavigationContainer independent={true}>

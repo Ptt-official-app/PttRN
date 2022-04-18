@@ -1,5 +1,3 @@
-class User {
+export interface User {
 
 }
-
-export {User}

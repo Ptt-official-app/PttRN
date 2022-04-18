@@ -1,48 +1,64 @@
-import BaseModel from "./baseModel";
-import boardApi from "../api/boardApi";
+import { BoardStatAttr } from './board_stat_attr'
+import { NumIdx } from './numidx'
+import { PERM } from './perm'
 
-class Board extends BaseModel {
-    bid: string;
-    brdname: string;
-    title: string;
-    flag: number;
-    type: string;
-    class: string;
-    nuser: number;
-    moderators: [
-        string
-    ];
-    reason: string;
-    read: true;
-    total: number;
-    last_post_time: number;
-    stat_attr: number;
-    level_idx: string;
-    gid: number;
+export interface BoardSummary extends NumIdx {
+    bid: string
+    brdname: string
+    title: string
+    flag: number
+    type: string
+    class: string
+    nuser: number
+    moderators: string[]
+    reason: string
+    read: boolean
+    total: number
+    last_post_time: number
+    stat_attr: BoardStatAttr
+    level_idx: string
 
-    key: string;
+    gid: number
+    pttbid: number
 
-    constructor(jsonObject: object) {
-        super(jsonObject);
-    }
+    url?: string
+
+    idx: string
 }
 
-async function fetchBoards(api: Promise<any>): Promise<Board[]> {
-    const jBoards = (await api).data;
-    const ret: Board[] = [];
-    for (const jBoard of jBoards.list) {
-        ret.push(new Board(jBoard));
-    }
-    return ret;
-}
+export interface BoardDetail {
+    // BoardSummary
+    bid: string
+    brdname: string
+    title: string
+    flag: number
+    type: string
+    class: string
+    nuser: number
+    moderators: string[]
+    reason: string
+    read: boolean
+    total: number
+    last_post_time: number
+    stat_attr: number
+    level_idx: string
 
-class FetchBoard {
-    static async allBoards(): Promise<Board[]> {
-        return fetchBoards(boardApi.all());
-    }
-    static async popularBoards(): Promise<Board[]> {
-        return fetchBoards(boardApi.popular());
-    }
-}
+    gid: number
+    pttbid: number
 
-export {Board, FetchBoard};
+    idx: string
+
+    // board-detail
+    update_time: number
+    vote_limit_logins: number
+    post_limit_logins: number
+    vote_limit_bad_post: number
+    post_limit_bad_post: number
+
+    vote: number
+    vtime: number
+
+    perm: PERM
+
+    last_set_time: number
+}

@@ -1,3 +1,1 @@
-type ErrorMessage = string
-
-export {ErrorMessage}
+export type ErrorMessage = string

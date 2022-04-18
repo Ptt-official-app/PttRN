@@ -1,16 +1,21 @@
 import React from "react"
 import { Text, View } from "react-native"
-import { Board } from "../model/board"
+import { BoardSummary } from "../model/board"
 import Icon from "react-native-vector-icons/MaterialIcons"
 import utils from "../util/utils"
 import { Link } from "../../react-router"
 
 import styles from './BoardListItem.style'
 
-export default function BoardListItem(props: { board: Board, key: number }) {
+type Props = {
+    board: BoardSummary
+    idx: number
+}
+
+export default (props: Props) => {
     const board = props.board
     return (
-        <Link key={props.key} to={`/articles/${board.bid}`} style={{ textDecoration: 'none' }}>
+        <Link key={props.idx} to={`${board.url}`} style={{ textDecoration: 'none' }}>
             <View style={styles.listItem}>
                 <View style={styles.firstRow}>
                     <Text style={[styles.text, styles.primaryText]}>{board.brdname}</Text>
@@ -26,7 +31,7 @@ export default function BoardListItem(props: { board: Board, key: number }) {
     )
 }
 
-function iconColor(nuser) {
+const iconColor = (nuser: number): string => {
     if (nuser <= 10) {
         return '#CCC'
     } else if (nuser <= 50) {

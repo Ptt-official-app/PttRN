@@ -1,37 +1,43 @@
-import React, { Component } from "react"
+import React, { useEffect, useState } from "react"
 import { ActivityIndicator, View } from "react-native"
-import { Board, FetchBoard } from "../model/board"
 import BoardList from "../component/BoardList"
 import styles from './PopularBoards.style'
 
-export default class PopularBoards extends Component<{}, {
-    boards: Board[]
-    loading: boolean
-}> {
-    constructor(props) {
-        super(props)
-        this.state = {
-            boards: [],
-            loading: true
-        }
-    }
+import * as DoPopularBoards from '../reducers/popularBoards'
 
-    render() {
-        return (
-            <View style={[styles.container]}>
-                <BoardList boards={this.state.boards} />
-                {this.state.loading && <ActivityIndicator size="large" style={{ backgroundColor: '#000' }} />}
-            </View>
-        )
-    }
+import { PopularBoards } from "../reducers/popularBoards"
 
-    async componentDidMount() {
-        const allBoards = await FetchBoard.popularBoards()
-        allBoards.map((each, idx) => each.key = idx.toString())
-        this.setState({
-            boards: allBoards,
-            loading: false
-        })
-    }
+import { useReducer, getRootState } from 'react-reducer-utils'
+
+import Empty from '../component/Empty'
+
+type Props = {
+    history: any
 }
 
+export default (props: Props) => {
+    const [statePopularBoards, doPopularBoards] = useReducer(DoPopularBoards)
+
+    useEffect(() => {
+        doPopularBoards.init(doPopularBoards)
+    }, [])
+
+    //get me
+    let me_q = getRootState<PopularBoards>(statePopularBoards)
+    let isLoading = me_q?.isLoading
+    useEffect(() => {
+    }, [isLoading])
+
+    if (!me_q) {
+        return <Empty />
+    }
+    let me = me_q
+
+    // render
+    return (
+        <View style={[styles.container]}>
+            <BoardList boards={me.boards || []} history={props.history} />
+            {isLoading && <ActivityIndicator size="large" style={{ backgroundColor: '#000' }} />}
+        </View>
+    )
+}

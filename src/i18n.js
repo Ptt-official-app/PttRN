@@ -18,7 +18,6 @@ const setI18nConfig = () => {
     const { languageTag } =
         RNLocalize.findBestAvailableLanguage(Object.keys(translationGetters)) || fallback
     translate.cache.clear()
-    console.log('setI18nConfig: languageTag:', languageTag)
     i18n.translations = { [languageTag]: translationGetters[languageTag]() }
     i18n.locale = languageTag
 }

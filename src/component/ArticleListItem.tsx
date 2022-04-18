@@ -1,13 +1,18 @@
-import React from "react";
-//import { Article } from "../model/article";
-import { Text, TouchableWithoutFeedback, View } from "react-native";
-import utils from "../util/utils";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import React from "react"
+import { Text, TouchableWithoutFeedback, View } from "react-native"
+import utils from "../util/utils"
+import Icon from "react-native-vector-icons/MaterialIcons"
 import styles from './ArticleListItem.style'
+import { ArticleSummary } from "../model/article"
 
-export default function ArticleListItem(props) {
-    const a = props.article;
-    const createTime = new Date(a.create_time * 1000);
+type Props = {
+    article: ArticleSummary
+    key: number
+}
+
+export default (props: Props) => {
+    const a = props.article
+    const createTime = new Date(a.create_time * 1000)
     return (
         <TouchableWithoutFeedback onPress={openArticle}>
             <View style={styles.listItem}>
@@ -30,7 +35,7 @@ export default function ArticleListItem(props) {
                 </View>
             </View>
         </TouchableWithoutFeedback>
-    );
+    )
 }
 
 const openArticle = () => {
