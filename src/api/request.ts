@@ -1,4 +1,4 @@
-import axios from "react-native-axios";
+import axios from "axios";
 
 const instance = axios.create({
     // FIXME: Change to config file
