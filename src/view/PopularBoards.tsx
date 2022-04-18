@@ -1,14 +1,15 @@
-import React, {Component} from "react";
-import {ActivityIndicator, StyleSheet, View} from "react-native";
-import {Board, FetchBoard} from "../model/board";
-import BoardList from "../component/BoardList";
+import React, { Component } from "react"
+import { ActivityIndicator, View } from "react-native"
+import { Board, FetchBoard } from "../model/board"
+import BoardList from "../component/BoardList"
+import styles from './PopularBoards.style'
 
 export default class PopularBoards extends Component<{}, {
     boards: Board[]
     loading: boolean
 }> {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             boards: [],
             loading: true
@@ -18,10 +19,10 @@ export default class PopularBoards extends Component<{}, {
     render() {
         return (
             <View style={[styles.container]}>
-                <BoardList boards={this.state.boards}/>
-                {this.state.loading && <ActivityIndicator size="large" style={{backgroundColor: '#000'}}/>}
+                <BoardList boards={this.state.boards} />
+                {this.state.loading && <ActivityIndicator size="large" style={{ backgroundColor: '#000' }} />}
             </View>
-        );
+        )
     }
 
     async componentDidMount() {
@@ -34,9 +35,3 @@ export default class PopularBoards extends Component<{}, {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center"
-    },
-});

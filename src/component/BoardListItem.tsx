@@ -1,27 +1,29 @@
-import React from "react";
-import {StyleSheet, Text, View} from "react-native";
-import {Board} from "../model/board";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import utils from "../util/utils";
-import {Link} from "../../react-router";
+import React from "react"
+import { Text, View } from "react-native"
+import { Board } from "../model/board"
+import Icon from "react-native-vector-icons/MaterialIcons"
+import utils from "../util/utils"
+import { Link } from "../../react-router"
+
+import styles from './BoardListItem.style'
 
 export default function BoardListItem(props: { board: Board, key: number }) {
-    const board = props.board;
+    const board = props.board
     return (
-        <Link key={props.key} to={`/articles/${board.bid}`} style={{textDecoration: 'none'}}>
+        <Link key={props.key} to={`/articles/${board.bid}`} style={{ textDecoration: 'none' }}>
             <View style={styles.listItem}>
                 <View style={styles.firstRow}>
                     <Text style={[styles.text, styles.primaryText]}>{board.brdname}</Text>
-                    <Icon style={{marginRight: 3}}
-                          name={board.nuser < 100 ? 'person' : 'people'}
-                          size={24}
-                          color={iconColor(board.nuser)}/>
+                    <Icon style={{ marginRight: 3 }}
+                        name={board.nuser < 100 ? 'person' : 'people'}
+                        size={24}
+                        color={iconColor(board.nuser)} />
                     <Text style={styles.text}>{utils.numberWithCommas(board.nuser)}</Text>
                 </View>
                 <Text style={[styles.text, styles.title]}>{board.title}</Text>
             </View>
         </Link>
-    );
+    )
 }
 
 function iconColor(nuser) {
@@ -47,26 +49,3 @@ function iconColor(nuser) {
         return '#F0F'
     }
 }
-
-const styles = StyleSheet.create({
-    listItem: {
-        flex: 1,
-        marginVertical: 8,
-        marginHorizontal: 14
-    },
-    text: {
-        color: 'white'
-    },
-    primaryText: {
-        flex: 1,
-        fontSize: 22
-    },
-    title: {
-        color: '#AAA',
-        fontSize: 10
-    },
-    firstRow: {
-        flexDirection: 'row',
-        textAlignVertical: 'center'
-    }
-})
