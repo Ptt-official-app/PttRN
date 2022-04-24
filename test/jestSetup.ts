@@ -1,5 +1,6 @@
 import { NativeModules } from 'react-native'
 import jest from 'jest'
+import React from 'react'
 
 /**
  * monkey patching the locale to avoid the error:

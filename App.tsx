@@ -14,25 +14,20 @@ export default (props: Props) => {
     const [isSetI18nConfig, setIsSetI18nConfig] = useState(false)
 
     let handleLocalizationChange = () => {
+        setIsSetI18nConfig(false)
         setI18nConfig()
         setIsSetI18nConfig(true)
     }
 
     useEffect(() => {
         setI18nConfig()
+        setIsSetI18nConfig(true)
         RNLocalize.addEventListener('change', handleLocalizationChange)
 
         return () => {
             RNLocalize.removeEventListener('change', handleLocalizationChange)
         }
     }, [])
-
-    useEffect(() => {
-        if (!isSetI18nConfig) {
-            return
-        }
-        setIsSetI18nConfig(false)
-    }, [isSetI18nConfig])
 
     return (
         <Router>
