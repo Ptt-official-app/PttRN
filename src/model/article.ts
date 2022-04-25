@@ -1,60 +1,42 @@
-import BaseModel from "./baseModel";
-import articleApi from "../api/articleApi";
+import { NumIdx } from './numidx'
+import { Rune } from './rune'
 
-class Article extends BaseModel {
-    aid: string;
-    bid: string;
-    deleted: boolean;
-    filename: string;
-    create_time: number;
-    modified: number;
-    recommend: number;
-    n_comments: number;
-    owner: string;
-    date: string;
-    title: string;
-    money: number;
-    type: string;
-    class: string;
-    mode: number;
-    url: string;
-    read: boolean;
-    idx: string;
-    rank: number;
-    subject_type: string
-
-    constructor(jsonObject: object) {
-        super(jsonObject);
-    }
+export interface ArticleBlock {
+    content: Rune[][]
+    deleted: boolean
+    create_time: number
+    modified: number
+    recommend?: number
+    n_comments?: number
+    owner?: string
+    nickname?: string
+    title?: string
+    money?: number
+    class?: string
+    mode?: number
+    ip?: string
+    host?: string
+    bbs?: string
+    rank?: number
+    next_idx: string
 }
 
-async function fetchArticles(api: Promise<any>): Promise<Article[]> {
-    const jArticles = (await api).data;
-    const ret: Article[] = [];
-    for (const json of jArticles.list) {
-        ret.push(new Article(json));
-    }
-    return ret;
+export interface ArticleSummary extends NumIdx {
+    bid: string
+    aid: string
+    deleted: boolean
+    create_time: number
+    modified: number
+    recommend: number
+    n_comments: number
+    owner: string
+    title: string
+    money: number
+    class: string
+    mode: number
+    url: string
+    read: boolean
+    idx: string
+    rank: number
+    subject_type: number
 }
-
-function extractArticles(res: any): Article[] {
-    const jArticles = res;
-    const ret: Article[] = [];
-    for (const json of jArticles.list) {
-        ret.push(new Article(json));
-    }
-    return ret;
-}
-
-
-class FetchArticle {
-    static async ofBoard(bid: string): Promise<Article[]> {
-        return fetchArticles(articleApi.ofBoard(bid));
-    }
-
-    static async inBoardPaged(bid: string, startIndex: string, limit: number): Promise<any> {
-        return (await articleApi.ofBoardPaged(bid, startIndex, limit)).data;
-    }
-}
-
-export {Article, FetchArticle, extractArticles}

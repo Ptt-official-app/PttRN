@@ -1,0 +1,1 @@
+export const N_ARTICLES = 50

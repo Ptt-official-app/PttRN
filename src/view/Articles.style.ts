@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center'
     },
     articlesContainer: {
-        flexShrink: 1,
+
     },
 })
 
