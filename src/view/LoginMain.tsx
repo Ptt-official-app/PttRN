@@ -70,12 +70,13 @@ export default (props: { history: any }) => {
             <Text style={[styles.logoText]}>{$t('login.logoText')}</Text>
             <View style={[styles.loginBox]}>
                 <TextInput onChangeText={onChangeUsername}
-                    style={[styles.loginInput]} placeholder={$t('login.username')} />
+                    style={[styles.loginInput]} placeholder={$t('login.username')} autoCapitalize='none' />
                 <View style={[styles.passwordOuter]}>
                     <TextInput onChangeText={onChangePassword}
                         style={[styles.passwordInput]}
                         placeholder={$t('login.password')}
                         secureTextEntry={hidePassword}
+                        autoCapitalize='none'
                     />
                     <TouchableOpacity
                         onPress={onSetHidePassword}>

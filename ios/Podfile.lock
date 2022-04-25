@@ -341,7 +341,7 @@ PODS:
     - React-jsi (= 0.66.4)
     - React-logger (= 0.66.4)
     - React-perflogger (= 0.66.4)
-  - RNLocalize (2.1.5):
+  - RNLocalize (2.2.1):
     - React-Core
   - RNScreens (3.8.0):
     - React-Core
@@ -546,7 +546,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: e3ffca672dd3772536cb844274094b0e2c31b187
   React-runtimeexecutor: dec32ee6f2e2a26e13e58152271535fadff5455a
   ReactCommon: 57b69f6383eafcbd7da625bfa6003810332313c4
-  RNLocalize: 13a971fd888f2933504a745983f781dc52feeab6
+  RNLocalize: 414c99a0f6625a58dfee7f5780678d98c4ffabc2
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
   RNVectorIcons: 31cebfcf94e8cf8686eb5303ae0357da64d7a5a4
   Yoga: e7dc4e71caba6472ff48ad7d234389b91dadc280
